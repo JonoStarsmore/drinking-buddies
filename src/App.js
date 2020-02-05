@@ -1,26 +1,83 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import data from './data';
+import APIContext from './APIContext';
+import EventList from './EventList';
+import EventPage from './EventPage';
+
+/*
+  - routing
+  - '/events' - list (EventList)
+  - '/events/:event_id/' - one full event (EventPage)
+*/
+
+class App extends Component {
+
+  state = {
+    users: [],
+    events: [],
+  }
+
+
+  componentDidMount() {
+    //update state to have the imported seed data
+    this.setState({
+      users: data.users, 
+      events: data.events,
+      })
+  }
+
+  
+  
+  
+
+  render() {
+  const value = {
+    users: this.state.users,  
+    events: this.state.events,
+} 
+
+
+
+  
+    return (
+    <APIContext.Provider value={value}>
+      <div className="App">
+            <div>
+      <h1><Link to='/events'>Drinking Buddies</Link></h1>
+      </div>
+       
+
+        <Route 
+          exact 
+          path='/events'
+          component={EventList}
+        />
+
+        
+        <Route 
+          exact 
+          path='/events/:event_id'
+          component={EventPage}
+        />
+
+
+      </div>
+
+
+    </APIContext.Provider>
+    );
+  }
 }
 
+
+
+  //jsx for landing page
+  //3. landing page -> main page
+   //     - link to main event list
+  //   - event description
+      //link to event list-route
+
 export default App;
+
