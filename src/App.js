@@ -5,6 +5,7 @@ import data from './data';
 import APIContext from './APIContext';
 import EventList from './EventList';
 import EventPage from './EventPage';
+import Home from './Home';
 
 /*
   - routing
@@ -43,19 +44,19 @@ class App extends Component {
   
     return (
     <APIContext.Provider value={value}>
-      <div className="App">
-            <div>
-      <h1><Link to='/events'>Drinking Buddies</Link></h1>
-      </div>
-       
+      <header>
+        <h1><Link to='/events'>Drinking Buddies</Link></h1>
+        <nav></nav>
+      </header>
+
+      <main className="App">
 
         <Route 
           exact 
-          path='/events'
-          component={EventList}
+          path='/'
+          component={Home}
         />
 
-        
         <Route 
           exact 
           path='/events/:event_id'
@@ -63,7 +64,7 @@ class App extends Component {
         />
 
 
-      </div>
+      </main>
 
 
     </APIContext.Provider>
