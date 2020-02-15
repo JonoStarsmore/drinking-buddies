@@ -1,5 +1,5 @@
 import React from 'react'
-import APIContext from './APIContext'
+//import './LandingPage.css';
 
 export default props => {
     return(

@@ -4,19 +4,25 @@ import APIContext from './APIContext';
 
 export default class AddEvent extends Component {
 
+    static contextType = APIContext;
+
     state = {
         title:'',
         location: '',
         description:'',
+        date:'',
     }
 
     onSubmitForm = (e) => {
         e.preventDefault();
+        const newEvent = {
+            title: this.state.title,
+            location: this.state.location,
+            description: this.state.description,
+            date: this.state.date
+        } 
 
-        // get all input data from state 
-        
-        // submit that information where it needs to go
-
+        this.context.addEvent(newEvent)
     }
 
     onInputChange = e => {
@@ -50,6 +56,7 @@ export default class AddEvent extends Component {
                         date:
                     <input onChange={this.onInputChange} value={this.state.date} className='input-date' name='date' type="date" />
                 </label>
+                <input type='submit' value='Submit' className='event-submit'/>
             </fieldset>
             </form>
         )
@@ -57,10 +64,3 @@ export default class AddEvent extends Component {
 } 
 
 
-/*1. add event component -> post to data. API.
-    - Add event form
-    - create post request that adds submission to data
-    Event list: add link to event form to event list render
-    create routing in app
-
-    */

@@ -37,12 +37,36 @@ class App extends Component {
       landed: true
     })
   }
+
+  addEvent = (newEvent) => {
+    fetch('localhost:8000/events',{
+      method: 'POST',
+      body: JSON.stringify(newEvent),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then(res => {
+      if(!res.ok){
+        throw 'could not post new event'
+      }
+    })
+
+    .then(res => {
+      return
+      console.log('posted')
+    })
+    .catch(error => {
+      console.log ({error})
+    })
+  }
   
 
   render() {
   const value = {
     users: this.state.users,  
     events: this.state.events,
+    addEvent: this.addEvent,
 } 
 
 
