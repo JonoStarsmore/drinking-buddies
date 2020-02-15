@@ -5,6 +5,17 @@ export default class EventPage extends React.Component {
 
 static contextType = APIContext;
 
+
+state = {
+  editing: false
+}
+
+//button will change state to true. and when true render edit event form. 
+//when false render event
+//move event jsx to its own component. which can be a function returning jsx
+
+
+
   render(){
 
       const eventId = this.props.match.params.event_id;

@@ -1,5 +1,5 @@
 const events = [
-//add description info
+
   {
     id: 1,
     title:'Dangerous Meetup',

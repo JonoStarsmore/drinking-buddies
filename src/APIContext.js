@@ -5,5 +5,6 @@ export default React.createContext({
     events: {},
     addEvent: () => {},
     deleteEvent: () => {},
+    editEvent: () => {},
 
 }) 
