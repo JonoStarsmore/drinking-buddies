@@ -6,6 +6,7 @@ import EventList from './EventList';
 import EventPage from './EventPage';
 import Home from './Home';
 import AddEvent from './AddEvent';
+import LandingPage from './LandingPage';
 
 /*
   - routing
@@ -18,6 +19,7 @@ class App extends Component {
   state = {
     users: [],
     events: [],
+    landed: false,
   }
 
 
@@ -30,7 +32,11 @@ class App extends Component {
   }
 
   
-  
+  handleEnter = () => {
+    this.setState({
+      landed: true
+    })
+  }
   
 
   render() {
@@ -54,7 +60,13 @@ class App extends Component {
         <Route 
           exact 
           path='/'
-          component={Home}
+          render={() => {
+            return (
+              this.state.landed 
+                ? <Home />
+                : <LandingPage handleEnter={this.handleEnter} /> 
+            )
+          }}
         />
 
         <Route 
