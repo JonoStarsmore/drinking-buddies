@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
-
 import data from './data';
 import APIContext from './APIContext';
 import EventList from './EventList';
 import EventPage from './EventPage';
 import Home from './Home';
+import AddEvent from './AddEvent';
 
 /*
   - routing
@@ -45,7 +45,7 @@ class App extends Component {
     return (
     <APIContext.Provider value={value}>
       <header>
-        <h1><Link to='/events'>Drinking Buddies</Link></h1>
+        <h1><Link to='/'>Drinking Buddies</Link></h1>
         <nav></nav>
       </header>
 
@@ -62,6 +62,13 @@ class App extends Component {
           path='/events/:event_id'
           component={EventPage}
         />
+
+        <Route
+          exact
+          path='/add-event'
+          component={AddEvent}
+        />
+    
 
 
       </main>

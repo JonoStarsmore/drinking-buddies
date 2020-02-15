@@ -14,7 +14,7 @@ export default class AddEvent extends Component {
         e.preventDefault();
 
         // get all input data from state 
-
+        
         // submit that information where it needs to go
 
     }
@@ -36,19 +36,19 @@ export default class AddEvent extends Component {
                 <legend>Add Event</legend>
                 <label htmlFor='title'>
                     title:
-                    <input onChange={this.onInputChange} className='input-title' name='title' type="text" />
+                    <input onChange={this.onInputChange} value={this.state.title} className='input-title' name='title' type="text" />
                 </label>
                 <label htmlFor='location'>
                         location:
-                    <input className='input-location' name='location'type="text" />
+                    <input onChange={this.onInputChange} value={this.state.location} className='input-location' name='location'type="text" />
                 </label>
                 <label htmlFor="description">
                         description:
-                    <input className='input-description' name='description' type="text" />
+                    <input onChange={this.onInputChange} value={this.state.description} className='input-description' name='description' type="text" />
                 </label>
                 <label htmlFor="date">
                         date:
-                    <input className='input-date' name='date' type="date" />
+                    <input onChange={this.onInputChange} value={this.state.date} className='input-date' name='date' type="date" />
                 </label>
             </fieldset>
             </form>
